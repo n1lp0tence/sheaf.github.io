@@ -1,0 +1,31 @@
+title: "Qiwu's Structure Sheaf"
+description: "Where scattered schizopostings are uniquely glued"
+baseurl: ""  # Leave empty if hosting at username.github.io
+url: "https://n1lp0tence.github.io"  # Your GitHub Pages URL
+masthead_title: "Home"
+
+remote_theme: "mmistakes/minimal-mistakes"
+minimal_mistakes_skin: "dark" # try "dark", "neon", "mint", etc.
+
+include:
+  - .htaccess
+
+plugins:
+  - jekyll-redirect-from
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-include-cache
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+
+collections:
+  blog:
+    output: true
+  papers:
+    output: true
+  notes:
+    output: true
