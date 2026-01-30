@@ -1,2 +1,1 @@
-# sheaf.github.io
-Qiwu's Structure Sheaf
+Move along, nothing to see here :)

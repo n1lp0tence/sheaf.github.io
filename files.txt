@@ -1,3 +1,0 @@
-Introduction_to_C_Infinity_Rings
-The_Kronecker_Weber_Theorem
-Algebraic_Geometry
