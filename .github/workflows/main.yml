@@ -20,7 +20,7 @@ jobs:
       - name: Install jq
         run: sudo apt-get update && sudo apt-get install -y jq
 
-      - name: Download & update PDFs (hash-aware)
+      - name: Download & update PDFs
         env:
           TOKEN: ${{ secrets.SOURCE_REPO_TOKEN }}
         run: |
@@ -29,15 +29,17 @@ jobs:
           OWNER="n1lp0tence"
           TAG="pdf-latest"
           ASSET="main.pdf"
-          LIST="files.txt"
+          LIST="_data/files.json"
 
           [[ -f "$LIST" ]] || { echo "Missing $LIST"; exit 1; }
 
           changed=0
 
           # Read non-empty, non-comment lines
-          while IFS= read -r repo_slug; do
-            repo_slug="$(echo "$repo_slug" | sed 's/#.*$//' | xargs || true)"
+          jq -c '.[]' "$LIST" | while read -r entry; do
+            repo_slug="$(echo "$entry" | jq -r '.name')"
+            type="$(echo "$entry" | jq -r '.type')"
+
             [[ -z "$repo_slug" ]] && continue
 
             full_repo="$OWNER/$repo_slug"
